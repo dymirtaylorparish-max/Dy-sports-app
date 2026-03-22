@@ -38,6 +38,14 @@ async function loadGames() {
     const div = document.createElement("div");
     div.className = "game";
 
+    const localStart = new Date(game.commence_time).toLocaleString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    });
+
     let oddsHTML = "";
 
     if (game.bookmakers && game.bookmakers.length > 0) {
@@ -57,7 +65,7 @@ async function loadGames() {
 
     div.innerHTML = `
       <h3>${game.home_team} vs ${game.away_team}</h3>
-      <p>Start: ${game.commence_time}</p>
+      <p>Start: ${localStart}</p>
       ${oddsHTML}
     `;
 
