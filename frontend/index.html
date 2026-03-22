@@ -4,9 +4,9 @@
   <title>Dy Sports App</title>
   <style>
     body {
-      font-family: Arial;
       background: #0f172a;
       color: white;
+      font-family: Arial;
       padding: 20px;
     }
     .game {
@@ -17,13 +17,15 @@
     }
   </style>
 </head>
+
 <body>
 
 <h1>🏀 Dy Sports App</h1>
+
 <div id="games"></div>
 
 <script>
-const API_URL = "https://pp-production.up.railway.app/api/odds/nba";
+const API_URL = "PUT_YOUR_RAILWAY_URL_HERE/api/odds/nba";
 
 async function loadGames() {
   const res = await fetch(API_URL);
@@ -37,7 +39,7 @@ async function loadGames() {
 
     div.innerHTML = `
       <h3>${game.home_team} vs ${game.away_team}</h3>
-      <p>Sport: ${game.sport_title}</p>
+      <p>Start: ${game.commence_time}</p>
     `;
 
     container.appendChild(div);
