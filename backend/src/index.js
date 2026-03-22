@@ -187,10 +187,14 @@ app.get("/api/games/:id", async (req, res) => {
   try {
     const gameId = req.params.id;
 
-    const gameRes = await axios.get(`${BDL_BASE}/games/${gameId}`, {
-      headers: BDL_HEADERS,
-    });
-    const game = gameRes.data.data;
+    const response = await axios.get(
+  `${BDL_BASE}/games?ids[]=${gameId}`,
+  {
+    headers: BDL_HEADERS,
+  }
+);
+
+const game = response.data.data[0];
 
     const homeTeam = game.home_team;
     const awayTeam = game.visitor_team;
